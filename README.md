@@ -1,5 +1,5 @@
 # VitalBrute
-<img src="https://github.com/xhad/vitalbrute/blob/master/assets/vitalbrute.png" width="100px" height="100px" />
+<img src="https://github.com/xhad/vitalbrute/blob/master/assets/vitalbrute.png" width="250px" height="250px" />
 Vitalbrute is an Ethereum smart contract scanner that performs a brutal and savagely aggressive contract attack. It also runs code analysis for known vulnerabilities.
 
 ### Getting Started
