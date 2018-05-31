@@ -97,8 +97,9 @@ contract MultiSigWallet {
         public 
         payable
     {
-        if (msg.value > 0)
+        if (msg.value > 0) {
             emit Deposit(msg.sender, msg.value);
+        }
     }
 
     /*
