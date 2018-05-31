@@ -15,6 +15,7 @@ docker-compose up --build
 ```
 docker run -it vitalbrute_mythril
 cd contracts
+nano wallet.sol (paste in the conract code and ctrl-x then y)
 myth -x wallet.sol --max-depth 10
 ```
 
@@ -22,6 +23,8 @@ myth -x wallet.sol --max-depth 10
 
 ```
 docker run -it vitalbrute_oyente
+cd contracts
+nano wallet.sol (paste in the conract code and ctrl-x then y)
 cd /oyente/oyente
 python oyente.py -s /contracts/wallet.sol
 ```

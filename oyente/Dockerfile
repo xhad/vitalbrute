@@ -1,7 +1,6 @@
 FROM ubuntu:16.04
 
 RUN mkdir -p /contracts
-COPY ./contracts /contracts
 
 RUN apt-get update
 RUN apt-get install -y wget unzip python-virtualenv git build-essential software-properties-common curl
@@ -10,7 +9,7 @@ RUN add-apt-repository -y ppa:ethereum/ethereum
 # RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 # RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update
-RUN apt-get install -y build-essential golang-go solc ethereum python3-dev python3-pip \
+RUN apt-get install -y build-essential golang-go nano solc ethereum python3-dev python3-pip \
 						ruby ruby-rails ruby-dev rake git-core curl zlib1g-dev build-essential libssl-dev \
                         libreadline-dev npm libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev \
                         libcurl4-openssl-dev python-software-properties libffi-dev nodejs && \

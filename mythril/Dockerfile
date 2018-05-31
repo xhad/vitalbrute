@@ -5,13 +5,13 @@ COPY . /mythril
 
 RUN mkdir -p /contracts
 WORKDIR /contracts
-COPY ./contracts /contracts
 
 RUN apt-get update \
   && apt-get install -y software-properties-common \
   && add-apt-repository -y ppa:ethereum/ethereum \
   && apt-get update \
   && apt-get install -y \
+     nano \
      solc \
      libssl-dev \
      python3-pip=9.0.1-2 \

@@ -2,10 +2,9 @@ FROM ubuntu:16.04
 
 RUN mkdir -p /contracts
 WORKDIR /contracts
-COPY ./contracts /contracts
 
 RUN apt-get -y update && \
-	DEBIAN_FRONTEND=noninteractive apt-get -y install python-pip git && \
+	DEBIAN_FRONTEND=noninteractive apt-get -y install python-pip nano git && \
 	git clone https://github.com/trailofbits/manticore.git && \
 	cd manticore && \
 	pip install .
