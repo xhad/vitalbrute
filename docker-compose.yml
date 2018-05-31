@@ -1,8 +1,9 @@
 version: '3'
 services:
   oyente:
-    build:
-      context: ./oyente
+    image: luongnguyen/oyente
+    # build:
+    #   context: ./oyente
     volumes:
         - ./contracts:/contracts
     ports:
