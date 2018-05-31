@@ -1,5 +1,8 @@
 FROM ubuntu:16.04
 
+RUN mkdir -p /contracts
+COPY ./contracts /contracts
+
 RUN apt-get update
 RUN apt-get install -y wget unzip python-virtualenv git build-essential software-properties-common curl
 RUN add-apt-repository -y ppa:ethereum/ethereum-dev
@@ -20,15 +23,13 @@ RUN mkdir -p /deps/z3/ &&  wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.
         ls /deps/z3 && mv /deps/z3/z3-z3-4.5.0/* /deps/z3/ &&  rm /deps/z3/z3.zip && \
         python scripts/mk_make.py --python && cd build && make && make install
 
-RUN mkdir /contracts
-
 COPY . /oyente/
 
 RUN apt-get install nodejs
 RUN npm i -g yarn
 RUN cd /oyente/web && ./bin/yarn install
 RUN cd /oyente/web && gem install bundler && bundle update && bundle install
+WORKDIR /contracts
 
-WORKDIR /oyente/web
 CMD ["/bin/bash"]
 

@@ -1,7 +1,11 @@
-FROM ubuntu:bionic
+FROM ubuntu:16.04
 
-COPY . /opt/mythril
-RUN mkdir /contracts
+RUN mkdir -p /mythril
+COPY . /mythril
+
+RUN mkdir -p /contracts
+WORKDIR /contracts
+COPY ./contracts /contracts
 
 RUN apt-get update \
   && apt-get install -y software-properties-common \
@@ -15,7 +19,7 @@ RUN apt-get update \
      pandoc \
      git \
   && ln -s /usr/bin/python3 /usr/local/bin/python \
-  && cd /opt/mythril \
+  && cd /mythril \
   && pip3 install -r requirements.txt \
   && python setup.py install
 

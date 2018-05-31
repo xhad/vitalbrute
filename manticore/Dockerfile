@@ -1,6 +1,8 @@
 FROM ubuntu:16.04
 
-RUN mkdir /contracts
+RUN mkdir -p /contracts
+WORKDIR /contracts
+COPY ./contracts /contracts
 
 RUN apt-get -y update && \
 	DEBIAN_FRONTEND=noninteractive apt-get -y install python-pip git && \
