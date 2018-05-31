@@ -15,21 +15,19 @@ docker-compose up --build
 ```
 docker run -it vitalbrute_mythril
 cd contracts
-myth -x wallet.sol
+myth -x wallet.sol --max-depth 10
 ```
 
 ### Oyente
 
 ```
 docker run -it vitalbrute_oyente
-cd contracts
-myth -x wallet.sol
+cd /oyente/oyente
+python oyente.py -s /contracts/wallet.sol
 ```
 
 ### Manticore
 
 ```
 docker run -it vitalbrute_manticore
-cd contracts
-manticore --help
 ```
