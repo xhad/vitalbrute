@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./node_modules/nodemon/bin/nodemon.js server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chad Lynch <chad@sentigence.com> (https://sentigence.com)",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "formidable": "^1.2.1",
+    "helmet": "^3.12.1",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.5"
+  }
+}
