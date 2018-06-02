@@ -13,11 +13,13 @@ docker-compose up --build
 ### Mythril
 
 ```
-docker run -it vitalbrute_mythril
+docker run -it vitalbrute_mythril /bin/bash
 cd contracts
 nano wallet.sol (paste in the contract code and ctrl-x then y)
 myth -x wallet.sol --max-depth 10
 ```
+After starting vitalbrute_mythril, you can visit the webui at:
+http://0.0.0.0:8080
 
 ### Oyente
 
