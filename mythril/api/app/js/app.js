@@ -1,53 +1,60 @@
-$(document).ready(
-    $("form").submit(function(evt) {
-        evt.preventDefault();
-        var formData = new FormData($(this)[0]);
-        $.ajax({
-            url: 'file',
-            type: 'POST',
-            data: formData,
-            async: false,
-            cache: false,
-            contentType: false,
-            enctype: 'multipart/form-data',
-            processData: false,
-            success: function (response) {
-                handleResult(response)
-            },
-            complete: function() {
-                return
-            }
-        })
+
+
+$("form").submit(function(evt) {
+    $('#results').empty()
+            $('#message').empty()
+
+    evt.preventDefault()
+    return $.ajax({
+    url: 'file',
+    type: 'POST',
+    data: new FormData($(this)[0]),
+    async: true,
+    cache: false,
+    contentType: false,
+    enctype: 'multipart/form-data',
+    processData: false,
+    start: $('#message').append('<p>Wait for scan to complete...</p>'),
+    success: function (response) {
+        $('#message').append('<p>Scan complete!</p>')
+        handleResult(response)
+    },
+    timeout: 100000
     })
-);
 
+ })
 
+function clear() {
+    $('#message').empty()
+    $('#results').empty()
+}
 
 function handleResult(data) {
     var msg = JSON.parse(data)
     if(msg.hasOwnProperty('success') && msg.success === true) {
         $('#results').empty()
-        $('#message').empty()
-        msg.issues.forEach(e => {
-            $('#results').append(findings(e))
+        msg.issues.forEach((e, i) => {
+            $('#results').append(findings(e, i))
         })
     }
+
+    return
 }
 
-function findings(data) {
+function findings(data, i) {
     return `
-        <table border="1px">
-        <tr><td>Type</td><td>${data.type}</td></tr>
-        <tr><td>Title</td><td>${data.title}</td></tr>
-        <tr><td>Filename</td><td>${data.filename}</td></tr>
-        <tr><td>Address</td><td>${data.address}</td></tr>
-        <tr><td>Debug</td><td>${data.debug}</td></tr>
-        <tr><td>Funtion</td><td>${data.function}</td></tr>
-        <tr><td>Line Number</td><td>${data.lineno}</td></tr>
-        <tr><td>Code</td><td>${data.code}</td></tr>
-        <tr><td>Description</td><td>${data.description}</td></tr>
-        </table>
-        <hr />
+    <h3>Finding #${i+1}</h3>
+    <table border="1px">
+    <tr><td>Type</td><td>${data.type}</td></tr>
+    <tr><td>Title</td><td>${data.title}</td></tr>
+    <tr><td>Filename</td><td>${data.filename}</td></tr>
+    <tr><td>Address</td><td>${data.address}</td></tr>
+    <tr><td>Debug</td><td>${data.debug}</td></tr>
+    <tr><td>Funtion</td><td>${data.function}</td></tr>
+    <tr><td>Line Number</td><td>${data.lineno}</td></tr>
+    <tr><td>Code</td><td>${data.code}</td></tr>
+    <tr><td>Description</td><td>${data.description}</td></tr>
+    </table>
     `
 }
 

@@ -7,7 +7,6 @@ const formidable = require('formidable')
 const fs = require('fs')
 
 const path  = require('path')
-const util = require('util')
 const app = new express()
 
 const scan = require('./controllers/Scan')
@@ -31,11 +30,7 @@ app.post('/file', (req, res, next) => {
     
     form.parse(req, function(err, fields, files) {
       let contract = files.text.path
-      scan(contract, 4).then(results => res.json(results))
-
-    //   res.end(() => {
-    //       util.inspect({fields: fields, files: files})
-    //   })
+      scan(contract, 6).then(results => res.json(results))
     })
  
     return
