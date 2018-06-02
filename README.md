@@ -10,6 +10,12 @@ docker-compose up --build
 
 ```
 
+Then visit: http://localhost:8080
+
+## Docker Containers
+
+Each scanner runs in a docker container and may be accessed and used individually as follows:
+
 ### Mythril
 
 ```
@@ -18,8 +24,6 @@ cd contracts
 nano wallet.sol (paste in the contract code and ctrl-x then y)
 myth -x wallet.sol --max-depth 10
 ```
-After starting vitalbrute_mythril, you can visit the webui at:
-http://0.0.0.0:8080
 
 ### Oyente
 
