@@ -10,9 +10,8 @@ const path  = require('path')
 const util = require('util')
 const app = new express()
 
-const Scan = require('./controllers/Scan')
-var host = "127.0.0.1";
-var port = 8080;
+const scan = require('./controllers/Scan')
+
 
 app.use(morgan('combined'))
 app.use(helmet())
@@ -24,23 +23,22 @@ app.get('/source', (req, res) => {
 
 app.use('/', express.static(path.join(__dirname + '/app')))
 
-
 app.post('/file', (req, res, next) => {
   if (req.url == '/file' && req.method.toLowerCase() == 'post') {
-    // parse a file upload
+
     var form = new formidable.IncomingForm();
-    form.uploadDir = "./contracts";
+    form.uploadDir = "./contracts"
     
     form.parse(req, function(err, fields, files) {
-      res.writeHead(200, {'content-type': 'text/plain'});
-      res.write(`received contract successfully`);
-      res.end(() => {
-          console.log(files)
-          util.inspect({fields: fields, files: files})
-      });
-    });
+      let contract = files.text.path
+      scan(contract, 4).then(results => res.json(results))
+
+    //   res.end(() => {
+    //       util.inspect({fields: fields, files: files})
+    //   })
+    })
  
-    return;
+    return
   }
 })
 

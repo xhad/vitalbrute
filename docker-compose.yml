@@ -12,7 +12,11 @@ services:
     build:
       context: ./mythril
     volumes:
-        - ./contracts:/contracts
+        - ./mythril:/mythril
+    ports:
+        - 8080:8080
+    command: >
+      sh -c 'cd mythril/api;npm i;npm start'
   manticore:
     build:
       context: ./manticore

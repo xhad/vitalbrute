@@ -2,14 +2,13 @@ FROM ubuntu:bionic
 
 RUN mkdir -p /mythril
 COPY . /mythril
-
-RUN mkdir -p /contracts
-WORKDIR /contracts
-
+EXPOSE 8080
 RUN apt-get update \
   && apt-get install -y software-properties-common \
   && add-apt-repository -y ppa:ethereum/ethereum \
+  && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
   && apt-get update \
+  && apt-get install -y nodejs \
   && apt-get install -y \
      solc \
      libssl-dev \
@@ -17,7 +16,9 @@ RUN apt-get update \
      python3-dev \
      pandoc \
      git \
+     curl \
      nano \
+     npm \
   && ln -s /usr/bin/python3 /usr/local/bin/python \
   && cd /mythril \
   && pip3 install -r requirements.txt \

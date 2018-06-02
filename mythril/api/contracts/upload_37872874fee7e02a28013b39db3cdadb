@@ -1,4 +1,4 @@
-pragma solidity 0.4.23;
+pragma solidity ^0.4.23;
 
 /// @title PropineCapitalMultisignature wallet - Allows multiple parties to agree on transactions before execution.
 /// Based on https://github.com/gnosis/MultiSigWallet
