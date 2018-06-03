@@ -31,6 +31,7 @@ function clear() {
 
 function handleResult(data) {
     var msg = JSON.parse(data)
+    console.log(data)
     if(msg.hasOwnProperty('success') && msg.success === true) {
         $('#results').empty()
         msg.issues.forEach((e, i) => {
@@ -43,18 +44,19 @@ function handleResult(data) {
 
 function findings(data, i) {
     return `
-    <h3>Finding #${i+1}</h3>
-    <table border="1px">
-    <tr><td>Type</td><td>${data.type}</td></tr>
-    <tr><td>Title</td><td>${data.title}</td></tr>
-    <tr><td>Filename</td><td>${data.filename}</td></tr>
-    <tr><td>Address</td><td>${data.address}</td></tr>
-    <tr><td>Debug</td><td>${data.debug}</td></tr>
-    <tr><td>Function</td><td>${data.function}</td></tr>
-    <tr><td>Line Number</td><td>${data.lineno}</td></tr>
-    <tr><td>Code</td><td>${data.code}</td></tr>
-    <tr><td>Description</td><td>${data.description}</td></tr>
-    </table>
+        <p>finished</p>
     `
 }
 
+{/* <h3>Finding #${i+1}</h3>
+<table border="1px">
+<tr><td>Type</td><td>${data.type}</td></tr>
+<tr><td>Title</td><td>${data.title}</td></tr>
+<tr><td>Filename</td><td>${data.filename}</td></tr>
+<tr><td>Address</td><td>${data.address}</td></tr>
+<tr><td>Debug</td><td>${data.debug}</td></tr>
+<tr><td>Function</td><td>${data.function}</td></tr>
+<tr><td>Line Number</td><td>${data.lineno}</td></tr>
+<tr><td>Code</td><td>${data.code}</td></tr>
+<tr><td>Description</td><td>${data.description}</td></tr>
+</table> */}

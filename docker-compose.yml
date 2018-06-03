@@ -5,20 +5,23 @@ services:
     # build:
     #   context: ./oyente
     volumes:
-        - ./contracts:/contracts
+        - ./oyente:/oyente
     ports:
+      - 3030:8080
       - 3000:3000
+    command: >
+      sh -c 'cd web;bundle install;bin/rails server'
   mythril:
     build:
       context: ./mythril
     volumes:
         - ./mythril:/mythril
     ports:
-        - 8080:8080
+        - 4000:8080
     command: >
       sh -c 'cd mythril/api;npm i;npm start'
-  manticore:
-    build:
-      context: ./manticore
-    volumes:
-        - ./contracts:/contracts
+  # manticore:
+  #   build:
+  #     context: ./manticore
+  #   volumes:
+  #       - ./contracts:/contracts

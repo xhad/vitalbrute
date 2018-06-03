@@ -1,7 +1,7 @@
 FROM ubuntu:bionic
-
 RUN mkdir -p /mythril
 COPY . /mythril
+
 EXPOSE 8080
 RUN apt-get update \
   && apt-get install -y software-properties-common \
@@ -23,6 +23,8 @@ RUN apt-get update \
   && cd /mythril \
   && pip3 install -r requirements.txt \
   && python setup.py install
+
+
 
 CMD ["/bin/bash"]
 

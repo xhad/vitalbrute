@@ -10,8 +10,6 @@ docker-compose up --build
 
 ```
 
-Then visit: http://localhost:8080
-
 ## Docker Containers
 
 Each scanner runs in a docker container and may be accessed and used individually as follows:
@@ -24,6 +22,8 @@ cd contracts
 nano wallet.sol (paste in the contract code and ctrl-x then y)
 myth -x wallet.sol --max-depth 10
 ```
+You can access the Mythril WebUI at:
+http://localhost:4000
 
 ### Oyente
 
@@ -34,6 +34,8 @@ nano wallet.sol (paste in the contract code and ctrl-x then y)
 cd /oyente/oyente
 python oyente.py -s /contracts/wallet.sol
 ```
+You can access the Oyente WebUI at:
+http://localhost:3000
 
 ### Manticore
 
