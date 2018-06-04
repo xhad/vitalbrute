@@ -7,7 +7,6 @@ services:
     volumes:
         - ./oyente:/oyente
     ports:
-      - 3030:8080
       - 3000:3000
     command: >
       sh -c 'cd web;bundle install;bin/rails server'
@@ -17,7 +16,7 @@ services:
     volumes:
         - ./mythril:/mythril
     ports:
-        - 4000:8080
+        - 4000:4000
     command: >
       sh -c 'cd mythril/api;npm i;npm start'
   # manticore:

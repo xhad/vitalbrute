@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 RUN mkdir -p /mythril
 COPY . /mythril
 
-EXPOSE 8080
+EXPOSE 4000
 RUN apt-get update \
   && apt-get install -y software-properties-common \
   && add-apt-repository -y ppa:ethereum/ethereum \
