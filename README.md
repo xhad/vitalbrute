@@ -16,16 +16,21 @@ Each scanner runs in a docker container and may be accessed and used individuall
 
 ### Mythril
 
+You can access the Mythril WebUI at:
+http://localhost:4000
+
 ```
 docker run -it vitalbrute_mythril /bin/bash
 cd contracts
 nano wallet.sol (paste in the contract code and ctrl-x then y)
 myth -x wallet.sol --max-depth 10
 ```
-You can access the Mythril WebUI at:
-http://localhost:4000
+
 
 ### Oyente
+
+You can access the Oyente WebUI at:
+http://localhost:3000
 
 ```
 docker run -it vitalbrute_oyente
@@ -34,8 +39,7 @@ nano wallet.sol (paste in the contract code and ctrl-x then y)
 cd /oyente/oyente
 python oyente.py -s /contracts/wallet.sol
 ```
-You can access the Oyente WebUI at:
-http://localhost:3000
+
 
 ### Manticore
 
