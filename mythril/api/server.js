@@ -11,7 +11,6 @@ const app = new express()
 
 const scan = require('./controllers/Scan')
 
-
 app.use(morgan('combined'))
 app.use(helmet())
 app.use(bodyParser.json())
@@ -30,7 +29,7 @@ app.post('/file', (req, res, next) => {
     
     form.parse(req, function(err, fields, files) {
       let contract = files.text.path
-      scan(contract, 5).then(results => res.json(results))
+      scan(contract, 10).then(results => res.json(results))
     })
  
     return
@@ -39,4 +38,4 @@ app.post('/file', (req, res, next) => {
 
 app.listen(config.port, config.host, () => {
     console.log('Server started on port', config.port)
-});
+})
