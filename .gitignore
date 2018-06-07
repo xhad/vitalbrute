@@ -2,3 +2,4 @@ mythril/api/contracts/*
 oyente/api/contracts/*
 *.pyc 
 node_modules
+.DS_Store
