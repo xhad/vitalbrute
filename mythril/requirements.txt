@@ -19,3 +19,4 @@ eth-tester>=0.1.0b21
 coverage
 jinja2
 pytest
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
